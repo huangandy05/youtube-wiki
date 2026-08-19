@@ -9,4 +9,5 @@ htmlcov/
 .streamlit/
 data/cache/
 *.tmp
-
+wiki/
+data/raw/

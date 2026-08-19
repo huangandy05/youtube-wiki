@@ -23,6 +23,19 @@ logging.basicConfig(
 )
 LOGGER = logging.getLogger("youtube_wiki.app")
 
+VIDEO_TABLE_COLUMNS = [
+    "Select",
+    "Thumbnail",
+    "Title",
+    "YouTube",
+    "Published",
+    "Duration",
+    "Description",
+    "Stream",
+    "Status",
+    "Video ID",
+]
+
 
 @st.cache_resource
 def state_repository(database_path: str) -> StateRepository:
@@ -75,7 +88,7 @@ def video_table(videos: list[Video]) -> pd.DataFrame:
                 "Video ID": video.video_id,
             }
         )
-    return pd.DataFrame(rows)
+    return pd.DataFrame(rows, columns=VIDEO_TABLE_COLUMNS)
 
 
 def extract_selected(videos: list[Video], selected_ids: set[str], replace: bool) -> None:
@@ -269,4 +282,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
